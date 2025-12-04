@@ -24,23 +24,45 @@
         const dots = document.querySelectorAll('.slider-dot');
         let currentSlide = 0;
         function showSlide(index) {
-            testimonialSlider.style.transform = `translateX(-${index * 100}%)`;
-            
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
-            
+            if (!testimonialSlider) return;
+            const slides = testimonialSlider.querySelectorAll('.testimonial');
+            if (!slides.length) return;
+            index = Math.max(0, Math.min(index, slides.length - 1));
+            const container = testimonialSlider.parentElement;
+            const slideWidth = container ? container.offsetWidth : slides[0].offsetWidth;
+            testimonialSlider.style.transform = `translateX(-${index * slideWidth}px)`;
+            if (dots && dots.length) {
+                dots.forEach(dot => dot.classList.remove('active'));
+                if (dots[index]) dots[index].classList.add('active');
+            }
             currentSlide = index;
         }
-        dots.forEach(dot => {
-            dot.addEventListener('click', function() {
-                const slideIndex = parseInt(this.getAttribute('data-index'));
-                showSlide(slideIndex);
+        if (dots && dots.length) {
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-index'));
+                    if (!Number.isNaN(slideIndex)) showSlide(slideIndex);
+                });
             });
-        });
-        setInterval(() => {
-            let nextSlide = (currentSlide + 1) % dots.length;
-            showSlide(nextSlide);
-        }, 5000);
+        }
+        function initSlider() {
+            if (testimonialSlider && testimonialSlider.parentElement) {
+                showSlide(0);
+            }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSlider);
+        } else {
+            setTimeout(initSlider, 100);
+        }
+        if (dots && dots.length) {
+            setInterval(() => {
+                const slides = testimonialSlider.querySelectorAll('.testimonial');
+                if (!slides.length) return;
+                let nextSlide = (currentSlide + 1) % slides.length;
+                showSlide(nextSlide);
+            }, 5000);
+        }
         const fadeElements = document.querySelectorAll('.fade-in');
         function checkFade() {
             fadeElements.forEach(element => {
@@ -55,18 +77,15 @@
         checkFade();
         window.addEventListener('scroll', checkFade);
         const words = ["Acrylic", "Charcoal", "Digital", "Oil Paint", "Pastel","Water Paint"];
-      const changingWordElement = document.getElementById('changing-word');
-      let wordIndex = 0;
-
-      function changeWord() {
+        const changingWordElement = document.getElementById('changing-word');
+        let wordIndex = 0;
+        function changeWord() {
         changingWordElement.classList.add('fade-out');
-        
         setTimeout(() => {
-          changingWordElement.textContent = words[wordIndex];
-          changingWordElement.classList.remove('fade-out');
-          wordIndex = (wordIndex + 1) % words.length;
+        changingWordElement.textContent = words[wordIndex];
+        changingWordElement.classList.remove('fade-out');
+        wordIndex = (wordIndex + 1) % words.length;
         }, 250);
-      }
-
-      changeWord(); 
-      setInterval(changeWord, 3000);
+        }
+        changeWord(); 
+        setInterval(changeWord, 3000);

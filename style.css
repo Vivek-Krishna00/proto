@@ -471,16 +471,20 @@
             max-width: 800px;
             margin: 0 auto;
             position: relative;
+            overflow: hidden;
         }
         .testimonial-slider {
             display: flex;
-            overflow: hidden;
+            overflow: visible;
+            width: 100%;
+            transition: transform 0.5s ease;
         }
         .testimonial {
+            flex: 0 0 100%;
             min-width: 100%;
             padding: 2rem;
             text-align: center;
-            transition: transform 0.5s ease;
+            flex-shrink: 0;
         }
         .testimonial-content {
             background: rgba(255, 255, 255, 0.05);
