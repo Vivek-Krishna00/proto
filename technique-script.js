@@ -1,4 +1,5 @@
 
+
 document.addEventListener('DOMContentLoaded', function() {
     const observerOptions = {
         threshold: 0.1,
@@ -6,22 +7,27 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 entry.target.style.animation = 'fadeIn 0.6s ease forwards';
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
-    document.querySelectorAll('.subtopic').forEach(element => {
+
+    const subtopics = document.querySelectorAll('.subtopic');
+    subtopics.forEach(function(element) {
         element.style.opacity = '0';
         observer.observe(element);
     });
-    document.querySelectorAll('.tip-card').forEach(element => {
+
+    const tipCards = document.querySelectorAll('.tip-card');
+    tipCards.forEach(function(element) {
         element.style.opacity = '0';
         observer.observe(element);
     });
 });
+
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fadeIn {
@@ -35,18 +41,23 @@ style.textContent = `
         }
     }`;
 document.head.appendChild(style);
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
+
+const anchorLinks = document.querySelectorAll('a[href^="#"]');
+anchorLinks.forEach(function(anchor) {
+    anchor.addEventListener('click', function(event) {
+        event.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            targetElement.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
         }
     });
 });
+
 const backBtn = document.querySelector('.back-btn');
 if (backBtn) {
     backBtn.addEventListener('mouseenter', function() {
@@ -57,4 +68,4 @@ if (backBtn) {
         this.style.color = 'var(--accent)';
     });
 }
-console.log('Technique page loaded successfully!');
+
