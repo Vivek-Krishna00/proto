@@ -59,7 +59,7 @@ p {
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 1.5rem 0;
+  padding: 1.5rem 5%;
   background: rgba(26, 26, 46, 0.95);
   backdrop-filter: blur(10px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -68,6 +68,9 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .back-btn {
   display: flex;
