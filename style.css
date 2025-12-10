@@ -1,4 +1,3 @@
-/* reset everything */
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +19,6 @@ body {
     overflow-x: hidden;
 }
 
-/* main wrapper for content */
 .main-wrapper {
     width: 90%;
     max-width: 1200px;
@@ -46,14 +44,13 @@ p {
     color: #9ca3af;
 }
 
-/* custom button style */
 .action-btn {
     display: inline-block;
     padding: 0.8rem 1.8rem;
     background: #ffffff;
     color: #000000;
     border: 1px solid #ffffff;
-    border-radius: 8px;
+    border-radius: 50px;
     cursor: pointer;
     text-decoration: none;
     font-weight: 600;
@@ -68,7 +65,6 @@ p {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-/* top nav stuff */
 header {
     position: fixed;
     top: 0;
@@ -166,7 +162,6 @@ header.scrolled {
     color: white;
 }
 
-/* hero banner section */
 .hero-banner {
     height: 100vh;
     position: relative;
@@ -186,7 +181,6 @@ header.scrolled {
     object-fit: cover;
     z-index: 0;
     opacity: 0.6;
-    /* Adjust visibility */
 }
 
 .video-overlay {
@@ -221,7 +215,6 @@ header.scrolled {
     color: #9ca3af;
 }
 
-/* section styles */
 .sect-head {
     text-align: center;
     margin-bottom: 5rem;
@@ -238,7 +231,6 @@ header.scrolled {
     display: inline-block;
 }
 
-/* cards common */
 .tech-grid,
 .mat-grid,
 .course-wrap {
@@ -251,7 +243,6 @@ header.scrolled {
 }
 
 .tech-card,
-/* .c-card, REMOVED c-card from here to style separately */
 .m-item {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -262,7 +253,6 @@ header.scrolled {
 }
 
 .tech-card:hover,
-/* .c-card:hover, */
 .m-item:hover {
     transform: translateY(-5px);
     border-color: rgba(99, 102, 241, 0.5);
@@ -270,7 +260,6 @@ header.scrolled {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* COURSE CARD SPECIAL STYLING */
 .course-wrap {
     display: flex;
     flex-direction: column;
@@ -364,7 +353,6 @@ header.scrolled {
     text-transform: capitalize;
 }
 
-/* The button inside course card */
 .c-card .action-btn {
     width: 100%;
     text-align: center;
@@ -386,7 +374,6 @@ header.scrolled {
     transform: translateY(-2px);
 }
 
-/* Mobile responsive for courses */
 @media (max-width: 768px) {
     .c-card {
         flex-direction: column;
@@ -406,13 +393,8 @@ header.scrolled {
     }
 }
 
-/* END COURSE CARD */
-
-
 .t-img,
-/* .c-img removed from general style */
 .tech-card .t-img {
-    /* keep for tech card */
     height: 220px;
     overflow: hidden;
     position: relative;
@@ -464,7 +446,6 @@ header.scrolled {
     border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
-/* gallery */
 .img-grid {
     column-count: 3;
     column-gap: 1.5rem;
@@ -476,23 +457,71 @@ header.scrolled {
     overflow: hidden;
     position: relative;
     break-inside: avoid;
-    opacity: 0.8;
+    opacity: 0.9;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .g-item:hover {
     opacity: 1;
     transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
 }
 
 .g-item img {
     width: 100%;
     display: block;
+    transition: all 0.5s ease;
 }
 
-/* materials grid icons */
+.g-item:hover img {
+    filter: brightness(0.6);
+    transform: scale(1.1);
+}
+
+.g-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.g-overlay h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    color: #fff;
+    letter-spacing: 0.05em;
+}
+
+.g-item:hover .g-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .mat-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+    .mat-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .mat-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .m-item {
@@ -509,7 +538,6 @@ header.scrolled {
     color: transparent;
 }
 
-/* call to action */
 .call-to-action {
     position: relative;
     padding: 8rem 0;
@@ -522,7 +550,6 @@ header.scrolled {
     margin-bottom: 1.5rem;
 }
 
-/* footer */
 footer {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding: 5rem 0 2rem;
@@ -583,7 +610,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/* modal */
 .popup {
     display: none;
     position: fixed;
@@ -738,7 +764,6 @@ footer {
     text-decoration: underline;
 }
 
-/* glowing orbs for background */
 .color-splash {
     position: absolute;
     width: 600px;
@@ -785,7 +810,6 @@ footer {
     transform: translateY(0);
 }
 
-/* mobile */
 @media (max-width: 768px) {
     .menu-items {
         position: fixed;

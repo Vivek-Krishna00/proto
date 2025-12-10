@@ -1,4 +1,3 @@
-/* general resets */
 * {
   margin: 0;
   padding: 0;
@@ -31,7 +30,6 @@ body {
   overflow-x: hidden;
 }
 
-/* general container */
 .main-wrapper {
   width: 90%;
   max-width: 1200px;
@@ -53,7 +51,6 @@ p {
   color: #9ca3af;
 }
 
-/* cool buttons */
 .action-btn {
   display: inline-block;
   padding: 0.8rem 1.8rem;
@@ -108,8 +105,9 @@ p {
 }
 
 .back-link:hover {
-  color: #ffffff;
-  transform: translateX(-4px);
+  color: #6366f1;
+  transform: translateY(-2px);
+  text-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
 }
 
 .technique-header h1 {
@@ -120,7 +118,6 @@ p {
   letter-spacing: -0.02em;
 }
 
-/* hero section */
 .tech-hero {
   margin-top: 80px;
   padding: 8rem 0 6rem;
@@ -128,7 +125,6 @@ p {
   overflow: hidden;
 }
 
-/* bg effect */
 .tech-hero::before {
   content: "";
   position: absolute;
@@ -277,7 +273,7 @@ p {
 
 .tips-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 
@@ -335,10 +331,14 @@ p {
   color: #e5e7eb;
   text-decoration: none;
   transition: var(--transition);
+  margin-left: 1rem;
+  display: inline-block;
 }
 
 .tech-footer a:hover {
   color: #6366f1;
+  transform: translateY(-2px);
+  text-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
 }
 
 @media (max-width: 768px) {
