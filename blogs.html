@@ -1,403 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Art Blogs - ArtistryHub</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      .back-btn {
-        display: inline-block;
-        color: #4ecdc4;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        margin-bottom: 2rem;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art Blogs - ArtistryHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .back-link {
+      display: inline-block;
+      color: #4ecdc4;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+    }
+
+    .back-link:hover {
+      color: #8a4fff;
+      transform: translateX(-5px);
+    }
+
+    .back-link i {
+      margin-right: 0.5rem;
+    }
+
+    .blogs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .blog-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .blog-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border-color: #8a4fff;
+    }
+
+    .blog-pic {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .blog-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .blog-box:hover .blog-pic img {
+      transform: scale(1.1);
+    }
+
+    .blog-info {
+      padding: 2rem;
+    }
+
+    .blog-date {
+      color: #4ecdc4;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-info h3 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .blog-info p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .blog-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-meta i {
+      color: #ff5733;
+    }
+
+    .read-link {
+      display: inline-block;
+      color: #8a4fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .read-link:hover {
+      color: #4ecdc4;
+      transform: translateX(5px);
+    }
+
+    .blogs-intro {
+      text-align: center;
+      padding: 4rem 0;
+      margin-top: 5rem;
+    }
+
+    .blogs-intro h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .blogs-intro p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    @media (max-width: 768px) {
+      .blogs-intro h1 {
+        font-size: 2rem;
       }
 
-      .back-btn:hover {
-        color: #8a4fff;
-        transform: translateX(-5px);
+      .blog-info {
+        padding: 1.5rem;
       }
+    }
+  </style>
+</head>
 
-      .back-btn i {
-        margin-right: 0.5rem;
-      }
-
-      .blogs-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-      }
-
-      .blog-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 15px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-      }
-
-      .blog-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        border-color: #8a4fff;
-      }
-
-      .blog-img {
-        height: 200px;
-        overflow: hidden;
-      }
-
-      .blog-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: all 0.3s ease;
-      }
-
-      .blog-card:hover .blog-img img {
-        transform: scale(1.1);
-      }
-
-      .blog-content {
-        padding: 2rem;
-      }
-
-      .blog-date {
-        color: #4ecdc4;
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .blog-content h3 {
-        color: white;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
-
-      .blog-content p {
-        color: rgba(255, 255, 255, 0.8);
-        margin-bottom: 1.5rem;
-        font-size: 0.95rem;
-      }
-
-      .blog-meta {
-        display: flex;
-        gap: 1rem;
-        font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.6);
-        margin-bottom: 1.5rem;
-      }
-
-      .blog-meta i {
-        color: #ff5733;
-      }
-
-      .read-more {
-        display: inline-block;
-        color: #8a4fff;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-      }
-
-      .read-more:hover {
-        color: #4ecdc4;
-        transform: translateX(5px);
-      }
-
-      .blogs-hero {
-        text-align: center;
-        padding: 4rem 0;
-        margin-top: 5rem;
-      }
-
-      .blogs-hero h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      .blogs-hero p {
-        font-size: 1.2rem;
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      @media (max-width: 768px) {
-        .blogs-hero h1 {
-          font-size: 2rem;
-        }
-
-        .blog-content {
-          padding: 1.5rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header id="header">
-      <div class="nav-container">
-        <a href="index.html" class="logo"><i class="fas fa-palette"></i> ArtistryHub</a>
-        <div class="hamburger" id="hamburger">
-          <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links" id="nav-links">
-          <li><a href="index.html#home">Home</a></li>
-          <li><a href="index.html#techniques">Techniques</a></li>
-          <li><a href="index.html#gallery">Gallery</a></li>
-          <li><a href="index.html#courses">Courses</a></li>
-          <li><a href="index.html#materials">Materials</a></li>
-          <li><a href="blogs.html">Blogs</a></li>
-          <li><a href="#" class="btn">Get Started</a></li>
-        </ul>
+<body>
+  <!-- nav header -->
+  <header id="header">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo"><i class="fas fa-palette"></i> ArtistryHub</a>
+      <div class="ham" id="ham">
+        <i class="fas fa-bars"></i>
       </div>
-    </header>
+      <ul class="menu-items" id="menu">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#techniques">Techniques</a></li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="index.html#materials">Materials</a></li>
+        <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="#" class="action-btn">Get Started</a></li>
+      </ul>
+    </div>
+  </header>
 
-    <section class="blogs-hero">
-      <div class="container nav-container">
-        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
-      </div>
-      <div class="container">
-        <h1>Art & Creativity Blog</h1>
-        <p>Discover tips, techniques, and inspiring stories from the art community</p>
-      </div>
-    </section>
+  <section class="blogs-intro">
+    <div class="main-wrapper nav-wrap">
+      <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+    <div class="main-wrapper">
+      <h1>Art & Creativity Blog</h1>
+      <p>Discover tips, techniques, and inspiring stories from the art community</p>
+    </div>
+  </section>
 
-    <section>
-      <div class="container">
-        <div class="blogs-container">
-          <div class="blog-card fade-in">
-            <div class="blog-img">
-              <img
-                src="image copy 5.png"
-                alt="Color Theory Basics"
-              />
-            </div>
-            <div class="blog-content">
-              <div class="blog-date"><i class="fas fa-calendar"></i> December 1, 2025</div>
-              <h3>Mastering Color Theory</h3>
-              <p>
-                Learn the fundamentals of color theory and how to create harmonious color
-                palettes in your artwork.
-              </p>
-              <div class="blog-meta">
-                <span><i class="fas fa-user"></i> Sarah Johnson</span>
-                <span><i class="fas fa-clock"></i> 5 min read</span>
-              </div>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
+  <section>
+    <div class="main-wrapper">
+      <div class="blogs-grid">
+        <div class="blog-box fade-in">
+          <div class="blog-pic">
+            <img src="image copy 5.png" alt="Color Theory Basics" />
           </div>
-
-          <div class="blog-card fade-in">
-            <div class="blog-img">
-              <img
-                src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFic3RyYWN0JTIwYXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                alt="Abstract Expression"
-              />
-            </div>
-            <div class="blog-content">
-              <div class="blog-date"><i class="fas fa-calendar"></i> November 28, 2025</div>
-              <h3>The Power of Abstract Art</h3>
-              <p>
-                Explore how abstract art breaks boundaries and allows artists to express
-                emotions in unique ways.
-              </p>
-              <div class="blog-meta">
-                <span><i class="fas fa-user"></i> Mike Chen</span>
-                <span><i class="fas fa-clock"></i> 7 min read</span>
-              </div>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-
-          <div class="blog-card fade-in">
-            <div class="blog-img">
-              <img
-                src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b2lsJTIwcGFpbnRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                alt="Oil Painting Tips"
-              />
-            </div>
-            <div class="blog-content">
-              <div class="blog-date"><i class="fas fa-calendar"></i> November 25, 2025</div>
-              <h3>Oil Painting Techniques for Beginners</h3>
-              <p>
-                Step-by-step guide to getting started with oil painting and avoiding
-                common mistakes.
-              </p>
-              <div class="blog-meta">
-                <span><i class="fas fa-user"></i> Emma Rodriguez</span>
-                <span><i class="fas fa-clock"></i> 6 min read</span>
-              </div>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-
-          <div class="blog-card fade-in">
-            <div class="blog-img">
-              <img
-                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2F0ZXJjb2xvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                alt="Digital Art Trends"
-              />
-            </div>
-            <div class="blog-content">
-              <div class="blog-date"><i class="fas fa-calendar"></i> November 22, 2025</div>
-              <h3>Digital Art Trends in 2025</h3>
-              <p>
-                Discover the latest trends in digital art and how artists are pushing
-                creative boundaries.
-              </p>
-              <div class="blog-meta">
-                <span><i class="fas fa-user"></i> Alex Thompson</span>
-                <span><i class="fas fa-clock"></i> 8 min read</span>
-              </div>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-
-          <div class="blog-card fade-in">
-            <div class="blog-img">
-              <img
-                src="image copy 6.png"
-                alt="Studio Setup"
-              />
-            </div>
-            <div class="blog-content">
-              <div class="blog-date"><i class="fas fa-calendar"></i> November 20, 2025</div>
-              <h3>Setting Up Your Home Art Studio</h3>
-              <p>
-                A complete guide to creating an inspiring and functional art studio space
-                at home.
-              </p>
-              <div class="blog-meta">
-                <span><i class="fas fa-user"></i> Lisa Park</span>
-                <span><i class="fas fa-clock"></i> 6 min read</span>
-              </div>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-
-          <div class="blog-card fade-in">
-            <div class="blog-img">
-              <img
-                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW9kZXJuJTIwYXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                alt="Artist Interview"
-              />
-            </div>
-            <div class="blog-content">
-              <div class="blog-date"><i class="fas fa-calendar"></i> November 18, 2025</div>
-              <h3>Interview: From Hobbyist to Professional Artist</h3>
-              <p>
-                Inspiring story of how one artist turned their passion into a full-time
-                career.
-              </p>
-              <div class="blog-meta">
-                <span><i class="fas fa-user"></i> David Wright</span>
-                <span><i class="fas fa-clock"></i> 10 min read</span>
-              </div>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-column">
-            <h3>ArtistryHub</h3>
+          <div class="blog-info">
+            <div class="blog-date"><i class="fas fa-calendar"></i> December 1, 2025</div>
+            <h3>Mastering Color Theory</h3>
             <p>
-              Your premier destination for mastering art techniques and
-              connecting with a global community of artists.
+              Learn the fundamentals of color theory and how to create harmonious color
+              palettes in your artwork.
             </p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
+            <div class="blog-meta">
+              <span><i class="fas fa-user"></i> Sarah Johnson</span>
+              <span><i class="fas fa-clock"></i> 5 min read</span>
             </div>
-          </div>
-          <div class="footer-column">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-              <li><a href="index.html#home">Home</a></li>
-              <li><a href="index.html#techniques">Techniques</a></li>
-              <li><a href="index.html#gallery">Gallery</a></li>
-              <li><a href="index.html#courses">Courses</a></li>
-              <li><a href="index.html#materials">Materials</a></li>
-              <li><a href="blogs.html">Blogs</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Resources</h3>
-            <ul class="footer-links">
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Tutorials</a></li>
-              <li><a href="#">Community</a></li>
-              <li><a href="#">Materials Guide</a></li>
-              <li><a href="#">FAQ</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Contact Us</h3>
-            <ul class="footer-links">
-              <li><i class="fas fa-envelope"></i> hello@artistryhub.com</li>
-              <li><i class="fas fa-phone"></i> +91 12333-45679</li>
-              <li>
-                <i class="fas fa-map-marker-alt"></i> 123 Art Street, Creative
-                City
-              </li>
-            </ul>
+            <a href="#" class="read-link">Read More →</a>
           </div>
         </div>
-        <div class="copyright">
-          <p>&copy; 2025 ArtistryHub. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
 
-    <div id="auth-modal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 id="modal-title">Sign Up</h2>
-          <button class="close-btn" id="close-modal">&times;</button>
-        </div>
-        
-        <div class="modal-body">
-
-          <form id="signup-form" class="auth-form active">
-            <div class="form-group">
-              <input type="email" id="signup-email" placeholder="Email" required />
-            </div>
-            <div class="form-group">
-              <input type="password" id="signup-password" placeholder="Password" required />
-            </div>
-            <button type="submit" class="btn btn-submit">Sign Up</button>
-            <p class="form-toggle">
-              Already have an account? <a href="#" id="toggle-to-login">Sign In</a>
+        <div class="blog-box fade-in">
+          <div class="blog-pic">
+            <img
+              src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFic3RyYWN0JTIwYXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              alt="Abstract Expression" />
+          </div>
+          <div class="blog-info">
+            <div class="blog-date"><i class="fas fa-calendar"></i> November 28, 2025</div>
+            <h3>The Power of Abstract Art</h3>
+            <p>
+              Explore how abstract art breaks boundaries and allows artists to express
+              emotions in unique ways.
             </p>
-          </form>
+            <div class="blog-meta">
+              <span><i class="fas fa-user"></i> Mike Chen</span>
+              <span><i class="fas fa-clock"></i> 7 min read</span>
+            </div>
+            <a href="#" class="read-link">Read More →</a>
+          </div>
+        </div>
 
-          <form id="login-form" class="auth-form">
-            <div class="form-group">
-              <input type="email" id="login-email" placeholder="Email" required />
-            </div>
-            <div class="form-group">
-              <input type="password" id="login-password" placeholder="Password" required />
-            </div>
-            <button type="submit" class="btn btn-submit">Sign In</button>
-            <p class="form-toggle">
-              Don't have an account? <a href="#" id="toggle-to-signup">Sign Up</a>
+        <div class="blog-box fade-in">
+          <div class="blog-pic">
+            <img
+              src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b2lsJTIwcGFpbnRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+              alt="Oil Painting Tips" />
+          </div>
+          <div class="blog-info">
+            <div class="blog-date"><i class="fas fa-calendar"></i> November 25, 2025</div>
+            <h3>Oil Painting Techniques for Beginners</h3>
+            <p>
+              Step-by-step guide to getting started with oil painting and avoiding
+              common mistakes.
             </p>
-          </form>
+            <div class="blog-meta">
+              <span><i class="fas fa-user"></i> Emma Rodriguez</span>
+              <span><i class="fas fa-clock"></i> 6 min read</span>
+            </div>
+            <a href="#" class="read-link">Read More →</a>
+          </div>
+        </div>
+
+        <div class="blog-box fade-in">
+          <div class="blog-pic">
+            <img
+              src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2F0ZXJjb2xvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+              alt="Digital Art Trends" />
+          </div>
+          <div class="blog-info">
+            <div class="blog-date"><i class="fas fa-calendar"></i> November 22, 2025</div>
+            <h3>Digital Art Trends in 2025</h3>
+            <p>
+              Discover the latest trends in digital art and how artists are pushing
+              creative boundaries.
+            </p>
+            <div class="blog-meta">
+              <span><i class="fas fa-user"></i> Alex Thompson</span>
+              <span><i class="fas fa-clock"></i> 8 min read</span>
+            </div>
+            <a href="#" class="read-link">Read More →</a>
+          </div>
+        </div>
+
+        <div class="blog-box fade-in">
+          <div class="blog-pic">
+            <img src="image copy 6.png" alt="Studio Setup" />
+          </div>
+          <div class="blog-info">
+            <div class="blog-date"><i class="fas fa-calendar"></i> November 20, 2025</div>
+            <h3>Setting Up Your Home Art Studio</h3>
+            <p>
+              A complete guide to creating an inspiring and functional art studio space
+              at home.
+            </p>
+            <div class="blog-meta">
+              <span><i class="fas fa-user"></i> Lisa Park</span>
+              <span><i class="fas fa-clock"></i> 6 min read</span>
+            </div>
+            <a href="#" class="read-link">Read More →</a>
+          </div>
+        </div>
+
+        <div class="blog-box fade-in">
+          <div class="blog-pic">
+            <img
+              src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW9kZXJuJTIwYXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              alt="Artist Interview" />
+          </div>
+          <div class="blog-info">
+            <div class="blog-date"><i class="fas fa-calendar"></i> November 18, 2025</div>
+            <h3>Interview: From Hobbyist to Professional Artist</h3>
+            <p>
+              Inspiring story of how one artist turned their passion into a full-time
+              career.
+            </p>
+            <div class="blog-meta">
+              <span><i class="fas fa-user"></i> David Wright</span>
+              <span><i class="fas fa-clock"></i> 10 min read</span>
+            </div>
+            <a href="#" class="read-link">Read More →</a>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <script src="script.js"></script>
-  </body>
+  <footer>
+    <div class="main-wrapper">
+      <div class="foot-cols">
+        <div class="footer-column">
+          <h3>ArtistryHub</h3>
+          <p>
+            Your premier destination for mastering art techniques and
+            connecting with a global community of artists.
+          </p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="foot-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#techniques">Techniques</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
+            <li><a href="index.html#courses">Courses</a></li>
+            <li><a href="index.html#materials">Materials</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="foot-links">
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Materials Guide</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul class="foot-links">
+            <li><i class="fas fa-envelope"></i> hello@artistryhub.com</li>
+            <li><i class="fas fa-phone"></i> +91 12333-45679</li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i> 123 Art Street, Creative
+              City
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 ArtistryHub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="auth-modal" class="popup">
+    <div class="popup-box">
+      <div class="popup-header">
+        <h2 id="modal-title">Sign Up</h2>
+        <button class="close-btn" id="close-modal">&times;</button>
+      </div>
+
+      <div class="popup-body">
+
+        <form id="signup-form" class="auth-form active">
+          <div class="form-group">
+            <input type="email" id="signup-email" placeholder="Email" required />
+          </div>
+          <div class="form-group">
+            <input type="password" id="signup-password" placeholder="Password" required />
+          </div>
+          <button type="submit" class="action-btn btn-submit">Sign Up</button>
+          <p class="form-toggle">
+            Already have an account? <a href="#" id="toggle-to-login">Sign In</a>
+          </p>
+        </form>
+
+        <form id="login-form" class="auth-form">
+          <div class="form-group">
+            <input type="email" id="login-email" placeholder="Email" required />
+          </div>
+          <div class="form-group">
+            <input type="password" id="login-password" placeholder="Password" required />
+          </div>
+          <button type="submit" class="action-btn btn-submit">Sign In</button>
+          <p class="form-toggle">
+            Don't have an account? <a href="#" id="toggle-to-signup">Sign Up</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
 </html>

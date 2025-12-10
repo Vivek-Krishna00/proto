@@ -1,149 +1,130 @@
-window.addEventListener("scroll", function () {
-  const header = document.getElementById("header");
+// scroll stuff for header
+window.onscroll = () => {
+  let head = document.getElementById("header");
   if (window.scrollY > 100) {
-    header.classList.add("scrolled");
+    head.classList.add("scrolled");
   } else {
-    header.classList.remove("scrolled");
+    head.classList.remove("scrolled");
   }
-});
+};
 
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("nav-links");
+// nav toggler
+let ham = document.getElementById("ham");
+let menu = document.getElementById("menu");
 
-hamburger.addEventListener("click", function () {
-  navLinks.classList.toggle("active");
-
-  if (navLinks.classList.contains("active")) {
-    hamburger.innerHTML = '<i class="fas fa-times"></i>';
+ham.onclick = () => {
+  menu.classList.toggle("active");
+  // switch icon
+  if (menu.classList.contains("active")) {
+    ham.innerHTML = '<i class="fas fa-times"></i>';
   } else {
-    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+    ham.innerHTML = '<i class="fas fa-bars"></i>';
   }
+};
+
+// close menu on click
+document.querySelectorAll("#menu a").forEach(l => {
+  l.onclick = () => {
+    menu.classList.remove("active");
+    ham.innerHTML = '<i class="fas fa-bars"></i>';
+  };
 });
 
-const navMenuLinks = document.querySelectorAll(".nav-links a");
-navMenuLinks.forEach(function (link) {
-  link.addEventListener("click", function () {
-    navLinks.classList.remove("active");
-    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-  });
-});
-
-const fadeInElements = document.querySelectorAll(".fade-in");
-
-function checkElementsInView() {
-  fadeInElements.forEach(function (element) {
-    const elementPosition = element.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight;
-
-    if (elementPosition < screenHeight - 100) {
-      element.classList.add("visible");
+// scroll fade in magic
+let faders = document.querySelectorAll(".fade-in");
+window.addEventListener("scroll", () => {
+  faders.forEach(el => {
+    // check if element is in view
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add("visible");
     }
   });
-}
+});
 
-checkElementsInView();
-window.addEventListener("scroll", checkElementsInView);
+// changing text animation
+let words = ["Acrylic", "Charcoal", "Digital", "Oil Paint", "Pastel", "Water Paint"];
+let txt = document.getElementById("changing-word");
+let idx = 0;
 
-const artWords = [
-  "Acrylic",
-  "Charcoal",
-  "Digital",
-  "Oil Paint",
-  "Pastel",
-  "Water Paint",
-];
-const wordElement = document.getElementById("changing-word");
-let currentWordIndex = 0;
+function swapWord() {
+  txt.classList.add("fade-out");
 
-function changeWord() {
-  wordElement.classList.add("fade-out");
-
-  setTimeout(function () {
-    wordElement.textContent = artWords[currentWordIndex];
-    wordElement.classList.remove("fade-out");
-    currentWordIndex = (currentWordIndex + 1) % artWords.length;
+  setTimeout(() => {
+    txt.textContent = words[idx];
+    txt.classList.remove("fade-out");
+    idx++;
+    if (idx >= words.length) idx = 0;
   }, 250);
 }
 
-changeWord();
-setInterval(changeWord, 3000);
+// run it
+swapWord();
+setInterval(swapWord, 3000);
 
-const authModal = document.getElementById("auth-modal");
-const closeBtn = document.getElementById("close-modal");
-const signupForm = document.getElementById("signup-form");
-const loginForm = document.getElementById("login-form");
-const switchToLoginBtn = document.getElementById("toggle-to-login");
-const switchToSignupBtn = document.getElementById("toggle-to-signup");
-const modalTitle = document.getElementById("modal-title");
+// modal junk
+let popup = document.getElementById("auth-modal");
+let xBtn = document.getElementById("close-modal");
+let signForm = document.getElementById("signup-form");
+let logForm = document.getElementById("login-form");
+let toLog = document.getElementById("toggle-to-login");
+let toSign = document.getElementById("toggle-to-signup");
+let popTitle = document.getElementById("modal-title");
 
-const allButtons = document.querySelectorAll(".btn");
-allButtons.forEach(function (button) {
-  if (button.textContent.trim() === "Get Started") {
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
-      openModal("signup");
-    });
+// open modal on get started
+document.querySelectorAll(".action-btn").forEach(b => {
+  if (b.textContent.trim() === "Get Started") {
+    b.onclick = (e) => {
+      e.preventDefault();
+      showPop("signup");
+    };
   }
 });
 
-function openModal(formType) {
-  authModal.classList.add("active");
-
-  if (formType === "signup") {
-    signupForm.classList.add("active");
-    loginForm.classList.remove("active");
-    modalTitle.textContent = "Sign Up";
+function showPop(type) {
+  popup.classList.add("active");
+  if (type === "signup") {
+    signForm.classList.add("active");
+    logForm.classList.remove("active");
+    popTitle.textContent = "Sign Up";
   } else {
-    signupForm.classList.remove("active");
-    loginForm.classList.add("active");
-    modalTitle.textContent = "Sign In";
+    signForm.classList.remove("active");
+    logForm.classList.add("active");
+    popTitle.textContent = "Sign In";
   }
 }
 
-function closeModal() {
-  authModal.classList.remove("active");
+function hidePop() {
+  popup.classList.remove("active");
 }
 
-closeBtn.addEventListener("click", function () {
-  closeModal();
-});
+xBtn.onclick = hidePop;
 
-authModal.addEventListener("click", function (event) {
-  if (event.target === authModal) {
-    closeModal();
-  }
-});
+// close on outside click
+popup.onclick = (e) => {
+  if (e.target === popup) hidePop();
+};
 
-switchToLoginBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  openModal("login");
-});
+toLog.onclick = (e) => {
+  e.preventDefault();
+  showPop("login");
+};
 
-switchToSignupBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  openModal("signup");
-});
+toSign.onclick = (e) => {
+  e.preventDefault();
+  showPop("signup");
+};
 
-signupForm.addEventListener("submit", function (event) {
-  event.preventDefault();
+// fake submit
+signForm.onsubmit = (e) => {
+  e.preventDefault();
+  alert("Account created! (fake) \nEmail: " + document.getElementById("signup-email").value);
+  signForm.reset();
+  hidePop();
+};
 
-  const signupEmail = document.getElementById("signup-email").value;
-
-  alert("Account created successfully!\nEmail: " + signupEmail);
-
-  signupForm.reset();
-
-  closeModal();
-});
-
-loginForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  const loginEmail = document.getElementById("login-email").value;
-
-  alert("Logged in as: " + loginEmail);
-
-  loginForm.reset();
-
-  closeModal();
-});
+logForm.onsubmit = (e) => {
+  e.preventDefault();
+  alert("Logged in! (fake) \nUser: " + document.getElementById("login-email").value);
+  logForm.reset();
+  hidePop();
+};
