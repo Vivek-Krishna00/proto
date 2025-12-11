@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art Vista — Community</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="community-1.css" />
+</head>
+<body>
+  <header id="header">
+    <nav>
+      <a href="index.html" class="logo"><i class="fas fa-palette logo-icon"></i> Art Vista</a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#techniques">Techniques</a></li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="index.html#materials">Materials</a></li>
+        <li><a href="blogs.html">Blogs</a></li>
+      </ul>
+      <a class="btn-purple" href="#">Get Started</a>
+    </nav>
+  </header>
+
+  <section class="hero-banner" style="padding:60px 0;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 20px;">
+      <h1 style="font-size:2rem;">Community</h1>
+      <p style="color:var(--text-muted);margin-top:8px;">Connect with artists, share your work, and discover trending creators.</p>
+      <video autoplay muted loop playsinline class="hero-video">
+      <source src="VIDEO-2025-12-10-18-37-28.mp4" type="video/mp4">
+    </video>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- left menu -->
+    <aside class="sidebar-menu">
+      <div style="background:transparent;padding:10px 0;">
+        <a href="#feed" class="active"><span class="sidebar-icon"><i class="fas fa-home"></i></span> Feed</a>
+        <a href="#discover"><span class="sidebar-icon"><i class="fas fa-compass"></i></span> Discover</a>
+        <a href="#groups"><span class="sidebar-icon"><i class="fas fa-users"></i></span> Groups</a>
+        <a href="#events"><span class="sidebar-icon"><i class="fas fa-calendar-alt"></i></span> Events</a>
+        <a href="#messages"><span class="sidebar-icon"><i class="fas fa-envelope"></i></span> Messages</a>
+      </div>
+    </aside>
+
+    <!-- main feed -->
+    <section id="feed">
+      <div class="create-post">
+        <div class="input-row">
+          <div class="user-avatar current-user" style="background-image:url('images/image.png')"></div>
+          <input class="post-input" placeholder="Share a new post, tutorial or ask a question..." />
+        </div>
+        <div class="divider"></div>
+        <div class="post-actions">
+          <div class="action-icons">
+            <span title="Add image"><i class="far fa-image"></i></span>
+            <span title="Add video"><i class="fas fa-video"></i></span>
+            <span title="Add link"><i class="fas fa-link"></i></span>
+          </div>
+          <button class="btn-purple small">Post</button>
+        </div>
+      </div>
+
+      <article class="feed-card">
+        <div class="card-header">
+          <div class="header-left">
+            <div class="user-avatar small-avatar" style="background-image:url('images/image copy.png')"></div>
+            <div class="user-info">
+              <h4>Rina Kapoor</h4>
+              <span>2 hrs · Acrylic practice</span>
+            </div>
+          </div>
+          <div class="more-options">•••</div>
+        </div>
+        <img class="card-image" src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1200&q=60" alt="post image">
+        <div class="card-body">
+          <h3 class="card-title">Quick texture study with palette knives</h3>
+          <p class="card-desc">Tried a new layering approach — left comments on brushes I used. Happy to share the full process and brushes list if anyone's interested.</p>
+          <div class="tags-container">
+            <span class="tag">Acrylic</span>
+            <span class="tag">Technique</span>
+            <span class="tag">Palette Knife</span>
+          </div>
+          <div class="card-footer">
+            <div class="social-stats">❤️ 128 &nbsp; 💬 24</div>
+            <button class="btn-white-pill">View</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="feed-card">
+        <div class="card-header">
+          <div class="header-left">
+            <div class="user-avatar small-avatar" style="background-image:url('images/image copy 3.png')"></div>
+            <div class="user-info">
+              <h4>Marco Lee</h4>
+              <span>1 day · Watercolor</span>
+            </div>
+          </div>
+          <div class="more-options">•••</div>
+        </div>
+        <img class="card-image" src="https://images.unsplash.com/photo-1574169208507-84376144848b?auto=format&fit=crop&w=1200&q=60" alt="post image">
+        <div class="card-body">
+          <h3 class="card-title">Layering glazes for soft edges</h3>
+          <p class="card-desc">Sharing a short timelapse of a floral study — ask me about paper choices and brushes.</p>
+          <div class="tags-container">
+            <span class="tag">Watercolor</span>
+            <span class="tag">Glaze</span>
+          </div>
+          <div class="card-footer">
+            <div class="social-stats">❤️ 95 &nbsp; 💬 18</div>
+            <button class="btn-white-pill">View</button>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- right sidebar -->
+    <aside class="sidebar-right">
+      <div class="trending-box">
+        <div class="section-title">Trending Creators</div>
+        <div class="trend-item">
+          <div class="trend-info">
+            <h5>Lyra Singh</h5>
+            <p>Oil portrait techniques</p>
+          </div>
+          <div class="trend-rank-1">#1</div>
+        </div>
+        <div class="trend-item">
+          <div class="trend-info">
+            <h5>Studio Nova</h5>
+            <p>Abstract acrylics</p>
+          </div>
+          <div class="trend-rank-2">#2</div>
+        </div>
+
+        <div class="mt-20">
+          <div class="section-title">Upcoming Events</div>
+          <div style="color:var(--text-muted);font-size:0.9rem;">Live critique — Dec 20 · 6PM</div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <footer style="margin-top:40px;padding:40px 0;background:transparent;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 20px;color:var(--text-muted);">
+      <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+        <div>
+          <h3 style="color:var(--text-main);">Art Vista</h3>
+          <p>Connect, learn and grow with fellow artists.</p>
+        </div>
+        <div>
+          <p>&copy; SNW - Group Project</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
