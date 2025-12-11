@@ -7,24 +7,7 @@ window.onscroll = () => {
   }
 };
 
-let ham = document.getElementById("ham");
-let menu = document.getElementById("menu");
 
-ham.onclick = () => {
-  menu.classList.toggle("active");
-  if (menu.classList.contains("active")) {
-    ham.innerHTML = '<i class="fas fa-times"></i>';
-  } else {
-    ham.innerHTML = '<i class="fas fa-bars"></i>';
-  }
-};
-
-document.querySelectorAll("#menu a").forEach(l => {
-  l.onclick = () => {
-    menu.classList.remove("active");
-    ham.innerHTML = '<i class="fas fa-bars"></i>';
-  };
-});
 
 let faders = document.querySelectorAll(".fade-in");
 window.addEventListener("scroll", () => {
@@ -105,14 +88,14 @@ toSign.onclick = (e) => {
 
 signForm.onsubmit = (e) => {
   e.preventDefault();
-  alert("Account created! (fake) \nEmail: " + document.getElementById("signup-email").value);
+  alert("Account created! \nEmail: " + document.getElementById("signup-email").value);
   signForm.reset();
   hidePop();
 };
 
 logForm.onsubmit = (e) => {
   e.preventDefault();
-  alert("Logged in! (fake) \nUser: " + document.getElementById("login-email").value);
+  alert("Logged in! \nUser: " + document.getElementById("login-email").value);
   logForm.reset();
   hidePop();
 };
