@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Art Vista — Community</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Consolidated Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Satisfy&family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="community-1.css" />
 </head>
+
 <body>
   <header id="header">
-    <nav>
-      <a href="index.html" class="logo"><i class="fas fa-palette logo-icon"></i> Art Vista</a>
-      <ul class="nav-links">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <i class="fas fa-palette"></i>
+        <div class="logo-text">
+          <span class="art-text">Art</span>
+          <span class="vista-text">Vista</span>
+        </div>
+      </a>
+      <ul class="menu-items" id="menu">
         <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#techniques">Techniques</a></li>
         <li><a href="index.html#gallery">Gallery</a></li>
         <li><a href="index.html#courses">Courses</a></li>
         <li><a href="index.html#materials">Materials</a></li>
         <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="community.html" class="active">Community</a></li>
+        <li><a href="#" class="action-btn btn-purple">Get Started</a></li>
       </ul>
-      <a class="btn-purple" href="#">Get Started</a>
-    </nav>
+    </div>
   </header>
 
-  <section class="hero-banner" style="padding:60px 0;">
-    <div style="max-width:1200px;margin:0 auto;padding:0 20px;">
-      <h1 style="font-size:2rem;">Community</h1>
-      <p style="color:var(--text-muted);margin-top:8px;">Connect with artists, share your work, and discover trending creators.</p>
-      <video autoplay muted loop playsinline class="hero-video">
-      <source src="VIDEO-2025-12-10-18-37-28.mp4" type="video/mp4">
-    </video>
+  <section class="community-hero">
+    <div class="main-wrapper">
+      <h1>Community</h1>
+      <p class="hero-subtitle">Connect with artists, share your work, and discover trending creators.</p>
+      <video autoplay muted loop playsinline class="hero-video-bg">
+        <source src="VIDEO-2025-12-10-18-37-28.mp4" type="video/mp4">
+      </video>
     </div>
   </section>
 
   <main class="container">
-    <!-- left menu -->
+
     <aside class="sidebar-menu">
       <div style="background:transparent;padding:10px 0;">
         <a href="#feed" class="active"><span class="sidebar-icon"><i class="fas fa-home"></i></span> Feed</a>
@@ -46,7 +59,7 @@
       </div>
     </aside>
 
-    <!-- main feed -->
+
     <section id="feed">
       <div class="create-post">
         <div class="input-row">
@@ -75,10 +88,13 @@
           </div>
           <div class="more-options">•••</div>
         </div>
-        <img class="card-image" src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1200&q=60" alt="post image">
+        <img class="card-image"
+          src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1200&q=60"
+          alt="post image">
         <div class="card-body">
           <h3 class="card-title">Quick texture study with palette knives</h3>
-          <p class="card-desc">Tried a new layering approach — left comments on brushes I used. Happy to share the full process and brushes list if anyone's interested.</p>
+          <p class="card-desc">Tried a new layering approach — left comments on brushes I used. Happy to share the full
+            process and brushes list if anyone's interested.</p>
           <div class="tags-container">
             <span class="tag">Acrylic</span>
             <span class="tag">Technique</span>
@@ -102,7 +118,9 @@
           </div>
           <div class="more-options">•••</div>
         </div>
-        <img class="card-image" src="https://images.unsplash.com/photo-1574169208507-84376144848b?auto=format&fit=crop&w=1200&q=60" alt="post image">
+        <img class="card-image"
+          src="https://images.unsplash.com/photo-1574169208507-84376144848b?auto=format&fit=crop&w=1200&q=60"
+          alt="post image">
         <div class="card-body">
           <h3 class="card-title">Layering glazes for soft edges</h3>
           <p class="card-desc">Sharing a short timelapse of a floral study — ask me about paper choices and brushes.</p>
@@ -119,7 +137,7 @@
 
     </section>
 
-    <!-- right sidebar -->
+
     <aside class="sidebar-right">
       <div class="trending-box">
         <div class="section-title">Trending Creators</div>
@@ -163,4 +181,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

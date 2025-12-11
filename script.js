@@ -45,7 +45,7 @@ let toSign = document.getElementById("toggle-to-signup");
 let popTitle = document.getElementById("modal-title");
 
 document.querySelectorAll(".action-btn").forEach(b => {
-  if (b.textContent.trim() === "Get Started") {
+  if (b.textContent.trim() === "Get Started" || b.textContent.trim() === "Join Now For Free") {
     b.onclick = (e) => {
       e.preventDefault();
       showPop("signup");
